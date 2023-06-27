@@ -1,0 +1,49 @@
+<main>
+  <p id="notice"></p>
+  <div class="container px-5 px-sm-0">
+    <% if @exam.errors.any? %>
+      <h3><%= @exam.errors.count %> error prohibited this obj from being saved:</h3>
+      <ul>
+      <% @exam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    <div class="row">
+      <%= render 'exams/userinfo', user: @user %>
+      <div class="col-md-8 offset-md-1">
+        <h2>過去問一覧</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th></th>
+              <th>授業名</th>
+              <th>補足情報</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @exams.each do |exam| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(exam.user) do %>
+                    <%= attachment_image_tag exam.user, :profile_image, size: "80x80", format:'jpg', fallback:"default-image.jpg" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to exam_path(exam.id) do %>
+                    <%= exam.class_name %>
+                  <% end %>
+                </td>
+                <td><%= exam.caption %></td>
+                <td>
+                  <p><%= link_to "#{exam.post_comments.count} コメント", exam_path(exam.id) %></p>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
