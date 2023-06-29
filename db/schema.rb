@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_27_033831) do
+ActiveRecord::Schema.define(version: 2023_06_28_153900) do
 
   create_table "exams", force: :cascade do |t|
     t.text "class_name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2023_06_27_033831) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "file_id"
   end
 
   create_table "post_comments", force: :cascade do |t|

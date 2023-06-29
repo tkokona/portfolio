@@ -5,7 +5,7 @@
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
         <h1>編集</h1>
         <% if @exam.errors.any? %>
-          <h3><%= @exam.errors.count %> error prohibited this obj from being saved:</h3>
+          <h3><%= @exam.errors.count %> 件のエラーが発生しました:</h3>
           <ul>
             <% @exam.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -16,6 +16,10 @@
           <div class="form-group">
             <label for="exam_class_name">授業名</label>
             <%= f.text_field :class_name, class: "form-control exam_class_name" %>
+          </div>
+           <div class="form-group">
+            <label for="exam_file">ファイル</label>
+            <%= f.attachment_field :file, class: "form-control exam_class_name" %>
           </div>
           <div class="form-group">
             <label for="exam_caption">補足情報</label>

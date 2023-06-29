@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save
-      flash[:notice] = 'You have updated user successfully.'
+      flash[:notice] = '更新完了'
       redirect_to user_path(@user.id)
     else
       render :edit

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :exams, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   attachment :profile_image
+  validates :name, presence: true
 end
