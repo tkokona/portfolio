@@ -1,14 +1,7 @@
 <main>
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
-    <% if @exam.errors.any? %>
-      <h3><%= @exam.errors.count %> error prohibited this obj from being saved:</h3>
-      <ul>
-      <% @exam.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    <% end %>
+    
     <div class="row">
       <%= render 'exams/userinfo', user: @user %>
       <div class="col-md-8 offset-md-1">
