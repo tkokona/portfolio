@@ -6,14 +6,11 @@ class Exam < ApplicationRecord
   validates :file, presence: true
   def self.looks(search, word)
     if search == "perfect_match"
-      @exam = Exam.where("class_name LIKE?","#{word}")
-    elsif search == "forward_match"
-      @exam = Exam.where("class_name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @exam = Exam.where("class_name LIKE?","%#{word}")
+      @exam = Exam.where("class_name LIKE ?","#{word}")
     elsif search == "partial_match"
-      @exam = Exam.where("class_name LIKE?","%#{word}%")
+      @exam = Exam.where("class_name LIKE ?","%#{word}%")
     else
+      logger.debug @exam.to_sql
       @exam = Exam.all
     end
   end

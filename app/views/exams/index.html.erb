@@ -1,24 +1,18 @@
 <main>
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
-    <% if @exam.errors.any? %>
-      <h3><%= @exam.errors.count %> error prohibited this obj from being saved:</h3>
-      <ul>
-      <% @exam.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    <% end %>
     <div class="row">
       <%= render 'exams/userinfo', user: @user %>
       <div class="col-md-8 offset-md-1">
+        <p id="notice"></p>
         <div class="search_form">
           <%= form_with url: search_path, local: true, method: :get do |f| %>
             <%= f.text_field :word %>
-            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
             <%= f.submit "検索", class: "btn btn-primary" %>
           <% end %>
         </div>
+        <p id="notice"></p>
         <h2>過去問一覧</h2>
         <table class="table table-hover table-inverse">
           <thead>
